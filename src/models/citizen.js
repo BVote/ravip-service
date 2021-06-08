@@ -1,9 +1,9 @@
 const mongoose = require("mongoose");
-const { customAlphabet:alphabet } = require("nanoid");
+const { customAlphabet:Alphabet } = require("nanoid");
 
 const SYMBOLES = "1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
-const nanoid = alphabet(SYMBOLES, 8);
+const nanoid = Alphabet(SYMBOLES, 8);
 
 // Identity is the reprensation of a person 
 
