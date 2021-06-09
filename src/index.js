@@ -31,5 +31,5 @@ const apolloServer = new ApolloServer(
 
 apolloServer.applyMiddleware({ app, path: "/ravip" });
 app.listen({ port:PORT }, () => {
-    console.log(`🚀 Ravip.service ready at http://localhost:${PORT}${apolloServer.graphqlPath}`);
+    console.log(`🚀Ravip.service ready at http://localhost:${PORT}${apolloServer.graphqlPath}`);
 });

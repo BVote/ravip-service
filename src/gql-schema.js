@@ -15,7 +15,7 @@ const typeDefs = gql`
         updatedAt: DateTime!
     }
 
-    # Identity type is used to represent a moral person
+    # Identity type is used to represent a moral person 
     type Identity {
         firstname: String
         lastname: String

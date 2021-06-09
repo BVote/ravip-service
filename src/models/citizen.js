@@ -22,7 +22,7 @@ const citizenSchema = new mongoose.Schema(
             default: () => faker.name.firstName()
         },
         lastname: {
-            type: String,
+            type: [String],
             required: true,
             default: () => faker.name.lastName()
         },
