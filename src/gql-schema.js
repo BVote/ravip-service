@@ -38,8 +38,9 @@ const typeDefs = gql`
     }
 
     input PersonAsIdentity {
-        "This is identical to ouput type Identity"
-        "But we replicate it due to graphql KISS principle"
+        """ This is identical to ouput type Identity,
+            But we replicate it due to graphql KISS principle
+        """
         firstname: String
         lastname: String
         email: [String]
