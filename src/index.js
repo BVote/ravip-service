@@ -7,7 +7,7 @@ const { ApolloServer, registerServer } = require("apollo-server-express");
 const { createComplexityLimitRule } = require("graphql-validation-complexity");
 
 const { typeDefs } = require("./gql-schema");
-// const models = require("./models");
+const models = require("./models");
 const resolvers = require("./resolvers");
 const PORT = process.env.PORT || 4000;
 const DB_STRING = process.env.DB_STRING;
