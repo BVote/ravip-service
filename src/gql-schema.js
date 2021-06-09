@@ -5,7 +5,7 @@ const { gql } = require("apollo-server-express");
 
 const typeDefs = gql`
     scalar DateTime
-
+    
     type Citizen {
         id: ID!
         identity: Identity!
@@ -15,6 +15,7 @@ const typeDefs = gql`
         updatedAt: DateTime!
     }
 
+    # Identity type is used to represent a moral person
     type Identity {
         firstname: String
         lastname: String
