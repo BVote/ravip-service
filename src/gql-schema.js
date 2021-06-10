@@ -14,8 +14,7 @@ const typeDefs = gql`
         createdAt: DateTime!
         updatedAt: DateTime!
     }
-
-    # Identity type is used to represent a moral person 
+    # Identity type is used to represent a moral person
     type Identity {
         firstname: String
         lastname: String
@@ -25,19 +24,16 @@ const typeDefs = gql`
         birthplace: String
         address: String
     }
-
     type Query {
-        ipsum: String
+        hello: String
         citizen(id: ID!): Citizen!
         identity(id: ID!): Identity!
         citizens: [Citizen]!
     }
-
     type Mutation {
         createCitizen(identity: PersonAsIdentity!, father:PersonAsIdentity!, father:PersonAsIdentity!): Citizen!
         updateCitizenAddress(id: ID!, identity: PersonAsIdentity!, father:PersonAsIdentity!, father:PersonAsIdentity!): Citizen!
     }
-
     input PersonAsIdentity {
         """ This is identical to ouput type Identity,
             But we replicate it due to graphql KISS principle
