@@ -6,15 +6,21 @@ const SYMBOLES = "1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ
 const nanoid = Alphabet(SYMBOLES, 8);
 faker.locale = "fr";
 
-
-// Identity is the reprensation of a person 
+/*******************************************************
+ * We will use the same father and mother every where
+ * to avoid typing mother and father in GQL playground
+ * This aMotherMongoId, aFatherMongoId should exist in 
+ * MongoDB database
+ *******************************************************/
+const aMotherMongoId = "60c4e315ee712b98d025b083";
+const aFatherMongoId = "60c4e24c95dd9897f585d096";
 
 const citizenSchema = new mongoose.Schema(
     {
         cid: {
             type: String,
             required: true,
-            default: () => nanoid()
+            default: () => "bj-"+nanoid()
         },
         firstname: {
             type: [String],
@@ -61,12 +67,14 @@ const citizenSchema = new mongoose.Schema(
         father: {
             type: mongoose.Schema.Types.ObjectId,
             ref: "Citizen",
-            // required: true
+            required: true,
+            default: mongoose.Types.ObjectId(aFatherMongoId)
         },
         mother: {
             type: mongoose.Schema.Types.ObjectId,
             ref: "Citizen",
-            // required: true
+            required: true,
+            default: mongoose.Types.ObjectId(aMotherMongoId)
         },
         children: [
             { 
