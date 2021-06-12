@@ -13,7 +13,7 @@ Faker.locale = "fr";
 module.exports = {
     createCitizen: async (parents, args, { models }) => {
 
-        const { firstnames, lastnames, emails, photos, telephones, birthdate, birthplace, address } = getDummyCitizen();
+        const { firstnames, lastnames, emails, photos, telephones, birthdate, birthplace, address, mother, father } = getDummyCitizen();
 
         const citizen =  await models.Citizen.create({
             firstnames,
@@ -23,7 +23,9 @@ module.exports = {
             telephones,
             birthdate,
             birthplace,
-            address 
+            address,
+            mother,
+            father 
             // firstnames: args.identity.firstnames,
             // lastnames: args.identity.lastnames,
             // emails: args.identity.emails,
