@@ -6,8 +6,8 @@ const { Types } = require("mongoose");
 
 /************************************************************
 * Use the same father and mother for every citizen this
-* help to avoid typing mother and father in GQL 
-* playground each time. motherMongoId and motherMongoId 
+* help to avoid typing mother and father ObjectId in GQL 
+* playground each time. motherMongoId and fathertherMongoId 
 * should exists. Be sure of that to avoid mutations errors
 ************************************************************/
 const motherMongoId = "60c4e315ee712b98d025b083";
