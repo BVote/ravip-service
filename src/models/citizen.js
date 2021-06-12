@@ -22,7 +22,7 @@ const citizenSchema = new mongoose.Schema(
             default: () => faker.name.firstName()
         },
         lastname: {
-            type: String,
+            type: [String],
             required: true,
             default: () => faker.name.lastName()
         },
@@ -60,11 +60,13 @@ const citizenSchema = new mongoose.Schema(
         },
         father: {
             type: mongoose.Schema.Types.ObjectId,
-            ref: "Citizen"
+            ref: "Citizen",
+            // required: true
         },
         mother: {
             type: mongoose.Schema.Types.ObjectId,
-            ref: "Citizen"
+            ref: "Citizen",
+            // required: true
         },
         children: [
             { 

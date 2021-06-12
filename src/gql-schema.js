@@ -8,6 +8,7 @@ const typeDefs = gql`
     
     type Citizen {
         id: ID!
+        cid: ID!
         identity: Identity!
         father: Identity!
         mother: Identity!
@@ -17,8 +18,8 @@ const typeDefs = gql`
 
     # Identity type is used to represent a moral person
     type Identity {
-        firstname: String
-        lastname: String
+        firstname: [String]
+        lastname: [String]
         email: [String]
         telephone: [String]
         birthdate: DateTime
@@ -28,13 +29,14 @@ const typeDefs = gql`
 
     type Query {
         ipsum: String
-        citizen(id: ID!): Citizen!
+        citizen(id: ID!, cid:ID!): Citizen!
         identity(id: ID!): Identity!
         citizens: [Citizen]!
     }
 
     type Mutation {
-        createCitizen(identity: PersonAsIdentity!, father:PersonAsIdentity!, father:PersonAsIdentity!): Citizen!
+        createNothing(nothing: String): String
+        createCitizen(identity: PersonAsIdentity, father:PersonAsIdentity, mother:PersonAsIdentity): Citizen!
         updateCitizenAddress(id: ID!, identity: PersonAsIdentity!, father:PersonAsIdentity!, father:PersonAsIdentity!): Citizen!
     }
 
@@ -42,8 +44,8 @@ const typeDefs = gql`
         """ This is identical to ouput type Identity,
             But we replicate it due to graphql KISS principle
         """
-        firstname: String
-        lastname: String
+        firstname: [String]
+        lastname: [String]
         email: [String]
         telephone: [String]
         birthdate: DateTime
