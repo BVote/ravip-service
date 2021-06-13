@@ -32,7 +32,6 @@ const citizenSchema = new mongoose.Schema(
                 type: [String],
                 required: true,
                 index: { unique: true },
-               // default: () => faker.internet.email()
             }
         ], 
         telephones: [
@@ -68,19 +67,13 @@ const citizenSchema = new mongoose.Schema(
         father: {
             type: mongoose.Schema.Types.ObjectId,
             ref: "Citizen",
-            required: true,
+            // required: true,
         },
         mother: {
             type: mongoose.Schema.Types.ObjectId,
             ref: "Citizen",
-            required: true,
+            // required: true,
         },
-        children: [
-            { 
-                type: mongoose.Schema.Types.ObjectId,
-                ref: "Citizen"
-            }
-        ] 
     },
     { timestamps: true }
 );

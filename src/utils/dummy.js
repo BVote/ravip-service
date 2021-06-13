@@ -7,22 +7,21 @@ const { Types } = require("mongoose");
 /************************************************************
 * Use the same father and mother for every citizen this
 * help to avoid typing mother and father ObjectId in GQL 
-* playground each time. motherMongoId and fathertherMongoId 
+* playground each time. motherMongoId and fatherMongoId 
 * should exists. Be sure of that to avoid mutations errors
 ************************************************************/
-const motherMongoId = "60c4e315ee712b98d025b083";
-const fatherMongoId = "60c4e24c95dd9897f585d096";
+const motherMongoId = "60c4f816273a31bba7b08069";
+const fatherMongoId = "60c4f84d273a31bba7b0806a";
 const emailDomainName = "example.com";
+const genders = ["male", "female"];
+
 
 module.exports = {
     getDummyCitizen: () => {
-
-        const firstnames = [Faker.name.firstName(), Faker.name.firstName()];
-        const lastnames = [Faker.name.lastName()];
-        const emails = [
-            Faker.internet.email(firstnames, lastnames, emailDomainName), 
-            firstnames[0].toLowerCase() + "." + lastnames[0].toLowerCase() + emailDomainName
-        ];
+        const gender = Faker.random.arrayElement(genders);
+        const firstnames = [Faker.name.firstName(gender), Faker.name.firstName(gender)];
+        const lastnames = [Faker.name.lastName(gender)];
+        const emails = [Faker.internet.email(firstnames, lastnames, emailDomainName).toLowerCase()];
         const photos = [gravatar(emails)];
         const telephones = [Faker.phone.phoneNumber("(+229) #########")];
         const birthdate = Faker.date.past(maxYears=100);
@@ -34,7 +33,6 @@ module.exports = {
         return {
             firstnames, lastnames, emails, photos, telephones, birthdate, birthplace, address, father, mother
         };
-
 
         // {
         //     firstnames: [ 'Anémone', 'Andéol' ],
