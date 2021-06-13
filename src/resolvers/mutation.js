@@ -1,14 +1,43 @@
+const { address } = require("faker");
+const Faker = require("faker");
+const gravatar = require("../utils/gravatar");
+const { getDummyCitizen } = require("../utils/dummy");
+Faker.locale = "fr";
+
+/***************************************************************************************
+ * We fake all mutation parameters to avoid passing parameters to mutations each time
+ * this means that the required symbole "!" has been removed for the moment at GQL side
+ * but not at mongoose side. In fact, playground args are accessible through "args"
+ ***************************************************************************************/
+
 module.exports = {
     createCitizen: async (parents, args, { models }) => {
-        return await models.Citizen.create({
-            firstname: args.firstname,
-            lastname: args.lastname,
-            email: args.email,
-            photo: args.photo,
-            telephone: args.telephone,
-            birthdate: args.birthdate,
-            birthplace: args.birthplace,
-            address: args.address
+
+        const { firstnames, lastnames, emails, photos, telephones, birthdate, birthplace, address, mother, father } = getDummyCitizen();
+
+        const citizen =  await models.Citizen.create({
+            firstnames,
+            lastnames,
+            emails,
+            photos,
+            telephones,
+            birthdate,
+            birthplace,
+            address,
+            mother,
+            father 
+            // firstnames: args.identity.firstnames,
+            // lastnames: args.identity.lastnames,
+            // emails: args.identity.emails,
+            // photos: args.identity.photos,
+            // telephones: args.identity.telephones,
+            // birthdate: args.identity.birthdate,
+            // birthplace: args.identity.birthplace,
+            // address: args.identity.address
         });
-    }
+        console.log(citizen);
+        return citizen;
+    },
+    createNothing: () => "Nothing is created"
+
 }

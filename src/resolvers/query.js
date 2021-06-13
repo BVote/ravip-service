@@ -1,14 +1,33 @@
 module.exports = {
     ipsum: () => "Lorem ipsum dolores",
-    citizen: async (parent, args, { models }) => {
-        // look at the alternative implementation using cid
+
+    getCitizenById: async (parent, args, { models }) => {
         return await models.Citizen.findById(args.id);
     },
-    identity: async (parent, args, { models }) => {
-        // TODO: selected fields according to Identidy fields
-        return await models.Citizen.findById(args.id);
+
+    getCitizenByCid: async (parents, args, { models }) => {
+        return await models.Citizen.findOne({cid: args.cid});
     },
-    citizens: async (parents, args, { models }) => {
+
+    getCitizenByName: async (parents, args, { models }) => {
+        return await models.Citizen.find({
+            $or: [
+                {
+                    firstnames: {$elemMatch: /args.name/}
+                },
+                {
+                    lastnames: {$elemMatch: /args.name/}
+                }
+            ]
+        });
+    },
+
+    getCitizenByEmail: async (parents, args, { models }) => {
+        return await models.Citizen.find({});
+    }, 
+
+    getCitizens: async (parents, args, { models }) => {
+        // implement cursor based pagination later
         return await models.Citizen.find({});
     }
 }

@@ -8,48 +8,43 @@ const typeDefs = gql`
     
     type Citizen {
         id: ID!
-        identity: Identity!
-        father: Identity!
-        mother: Identity!
+        cid: ID!
+        firstnames: [String]
+        lastnames: [String]
+        emails: [String]
+        mother: String
+        father: String
+        telephones: [String]
+        birthdate: DateTime
+        birthplace: String
+        address: String
         createdAt: DateTime!
         updatedAt: DateTime!
     }
 
-    # Identity type is used to represent a moral person
-    type Identity {
-        firstname: String
-        lastname: String
-        email: [String]
-        telephone: [String]
-        birthdate: DateTime
-        birthplace: String
-        address: String
-    }
-
     type Query {
         ipsum: String
-        citizen(id: ID!): Citizen!
-        identity(id: ID!): Identity!
-        citizens: [Citizen]!
+        getCitizenByCid(cid:ID!): Citizen!
+        getCitizenById(id: ID!): Citizen!
+        getCitizenByName(name: String!): Citizen!
+        getCitizenByEmail(email: String!): Citizen!
+        getCitizens: [Citizen]!
     }
 
     type Mutation {
-        createCitizen(identity: PersonAsIdentity!, father:PersonAsIdentity!, father:PersonAsIdentity!): Citizen!
-        updateCitizenAddress(id: ID!, identity: PersonAsIdentity!, father:PersonAsIdentity!, father:PersonAsIdentity!): Citizen!
+        createNothing(nothing: String): String
+        createCitizen(
+            firstnames: [String], 
+            lastnames: [String], 
+            emails: [String],
+            telephones: [String],
+            birthdate: DateTime,
+            birthplace: String,
+            address: String
+        ): Citizen!
+        
     }
 
-    input PersonAsIdentity {
-        """ This is identical to ouput type Identity,
-            But we replicate it due to graphql KISS principle
-        """
-        firstname: String
-        lastname: String
-        email: [String]
-        telephone: [String]
-        birthdate: DateTime
-        birthplace: String
-        address: String
-    }
 `;
 
 module.exports = { typeDefs };
