@@ -23,16 +23,17 @@ const typeDefs = gql`
     }
 
     type Query {
-        ipsum: String
+        getLoremIpsum: String
         getCitizenByCid(cid:ID!): Citizen!
         getCitizenById(id: ID!): Citizen!
         getCitizenByName(name: String!): Citizen!
         getCitizenByEmail(email: String!): Citizen!
         getCitizens: [Citizen]!
+        getRandomCitizen: [Citizen]!
     }
 
     type Mutation {
-        createNothing(nothing: String): String
+        createLoremIpsum: String
         createCitizen(
             firstnames: [String], 
             lastnames: [String], 
@@ -42,9 +43,7 @@ const typeDefs = gql`
             birthplace: String,
             address: String
         ): Citizen!
-        
     }
-
 `;
 
 module.exports = { typeDefs };
