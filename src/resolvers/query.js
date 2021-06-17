@@ -46,7 +46,7 @@ module.exports = {
 
     getRandomCitizen: async (parents, args, { models }) => {
         return await models.Citizen.aggregate([
-            {$sample: {size: 1}}
+            {$sample: {size: 2}}
         ]);
     }
 }

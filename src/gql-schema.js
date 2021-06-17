@@ -12,6 +12,7 @@ const typeDefs = gql`
         firstnames: [String]
         lastnames: [String]
         emails: [String]
+        photos: [String]
         mother: String
         father: String
         telephones: [String]
