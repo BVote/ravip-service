@@ -1,6 +1,5 @@
 const { address } = require("faker");
 const Faker = require("faker");
-const gravatar = require("../utils/gravatar");
 const { getDummyCitizen } = require("../utils/dummy");
 const { loremIpsum } = require("lorem-ipsum");
 Faker.locale = "fr";
@@ -25,14 +24,6 @@ module.exports = {
             address,
             mother,
             father 
-            // firstnames: args.identity.firstnames,
-            // lastnames: args.identity.lastnames,
-            // emails: args.identity.emails,
-            // photos: args.identity.photos,
-            // telephones: args.identity.telephones,
-            // birthdate: args.identity.birthdate,
-            // birthplace: args.identity.birthplace,
-            // address: args.identity.address
         });
         console.log(citizen);
         return citizen;

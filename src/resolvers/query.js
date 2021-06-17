@@ -25,18 +25,18 @@ module.exports = {
     getCitizenByName: async (parents, args, { models }) => {
         return await models.Citizen.find({
             $or: [
-                {
-                    firstnames: {$elemMatch: /args.name/}
-                },
-                {
-                    lastnames: {$elemMatch: /args.name/}
-                }
+                { "firstnames": {$regex: args.name, $options: "i" } },
+                { "lastnames": {$regex: args.name, $options: "i" } }
             ]
         });
     },
 
     getCitizenByEmail: async (parents, args, { models }) => {
-        return await models.Citizen.find({});
+        return await models.Citizen.find({
+            $or: [
+                { "emails": {$regex: args.email, $options: "i" } }
+            ]
+        });
     }, 
 
     getCitizens: async (parents, args, { models }) => {

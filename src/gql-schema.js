@@ -9,8 +9,8 @@ const typeDefs = gql`
     type Citizen {
         id: ID!
         cid: ID!
-        firstnames: [String]
-        lastnames: [String]
+        firstnames: [String] 
+        lastnames: [String] 
         emails: [String]
         photos: [String]
         mother: String
@@ -27,8 +27,8 @@ const typeDefs = gql`
         getLoremIpsum: String
         getCitizenByCid(cid:ID!): Citizen!
         getCitizenById(id: ID!): Citizen!
-        getCitizenByName(name: String!): Citizen!
-        getCitizenByEmail(email: String!): Citizen!
+        getCitizenByName(name: String!): [Citizen]!
+        getCitizenByEmail(email: String!): [Citizen]!
         getCitizens: [Citizen]!
         getRandomCitizen: [Citizen]!
     }
