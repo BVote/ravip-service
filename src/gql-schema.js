@@ -29,6 +29,7 @@ const typeDefs = gql`
         getCitizenById(id: ID!): Citizen!
         getCitizenByName(name: String!): [Citizen]!
         getCitizenByEmail(email: String!): [Citizen]!
+        # add parameters for getCitizens for cursor pagination implementation later
         getCitizens: [Citizen]!
         getRandomCitizen: [Citizen]!
     }
