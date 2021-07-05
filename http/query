@@ -1,0 +1,5 @@
+ curl \
+-X POST \
+-H "Content-Type: application/json" \
+--data '{ "query": "{ ipsum " }' \
+https://ravip-service.herokuapp.com/ravip

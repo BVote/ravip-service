@@ -57,7 +57,7 @@ const citizenSchema = new mongoose.Schema(
                 type: String,
                 required: true,
                 // default: () => faker.image.avatar()
-        }
+            }
         ],
         address: {
             type: String,
