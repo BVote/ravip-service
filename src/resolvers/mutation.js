@@ -5,7 +5,7 @@ const { loremIpsum } = require("lorem-ipsum");
 Faker.locale = "fr";
 
 
-// we fake all mutation parameters through mutations code to avoir typing each parameters in 
+// we fake all mutation parameters through mutations code to avoid typing each parameters in 
 // graphql playground, this means that we removed the required clause while defining graphql types
 
 module.exports = {
@@ -40,5 +40,4 @@ module.exports = {
         units: "sentences",      // paragraph(s), "sentence(s)", or "word(s)"
         // words: ["ad", ...]       // Array of words to draw from
     })
-
 }
